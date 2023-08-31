@@ -1,0 +1,8 @@
+﻿CREATE TABLE bharath (Snum INT PRIMARY KEY,Sname VARCHAR(30) UNIQUE ,City VARCHAR(30),Comm INT);
+Create Table Customers(Cnum INT PRIMARY KEY,Cname VARCHAR(30),City VARCHAR(30) NOT NULL,Snum INT,FOREIGN KEY (Snum) REFERENCES Salespeople(Snum) );
+CREATE TABLE orders (Onum INT PRIMARY KEY,Amt decimal(6,2),Odate VARCHAR(10) NOT NULL,Cnum INT NOT NULL,Snum INT NOT NULL FOREIGN KEY (Cnum) REFERENCES Customers(Cnum), FOREIGN KEY (Snum) REFERENCES Salespeople(Snum));
+SELECT COUNT(*) FROM bharath where Snum like 'a%';
+select bharath.Snum from bharath inner join order on bharath.Snum = orders.snum;
+select Sname from bharath where City = 'Newyork';
+SELECT COUNT(Snum)from bharath  where City = 'London' and City = 'paris';
+SELECT Odate,Snum,count(*) from order group by Odate,Snum
